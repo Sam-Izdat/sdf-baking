@@ -7,17 +7,24 @@ Visual Studio 17 2022 needs to be told to install CMake support and Windows 10 S
 - "C++ CMake tools for Windows"
 - "Windows 10 SDK [...]"
 
+## Undefined stuff
+
 WIN32 is not defined for some reason and required for dependencies. Can add to `CMakeLists.txt`:
 
     add_definitions(-DWIN32) 
 
 May need to install zlib with vcpkg.
 
+
+## Build flags and VS builds
+
 Build with:
 
     cmake -DCMAKE_CXX_FLAGS="/EHsc" -G "Visual Studio 17 2022" ..
 
-Load solution. Right-click "SDFBaking" and "Set as Startup Project" then compile with debugger.
+Apparently, will not compile without `/EHsc` flag.
+
+Load solution in VS. Right-click "SDFBaking" and "Set as Startup Project" then compile with debugger.
 
 ## Errors to fix
 
